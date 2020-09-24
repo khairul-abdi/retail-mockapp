@@ -1,16 +1,15 @@
-/** * Created by vouill on 11/14/17. */
-
 <template>
-  <div class="sq-footer">
-    Made w/ love @&nbsp;<a target="_blank" href="https://sqreen.io">Sqreen</a>
+  <div class="footer fixed-bottom">
+    Made w/ love @&nbsp;<a target="_blank" href="https://khairul-abdi.netlify.app/">Khairul Abdi</a>
   </div>
 </template>
 
-<style scoped>
-.sq-footer {
+<style lang="scss" scoped>
+.footer {
   background-color: rgb(183, 72, 14);
-  height: 20px;
-  font-size: 12px;
+  height: 40px;
+  width: 100%;
+  font-size: 14px;
   display: flex;
   justify-content: flex-end;
   color: white;
@@ -24,6 +23,6 @@ a {
 
 <script>
 export default {
-  name: "sqreen-footer"
+  name: "footer"
 };
 </script>

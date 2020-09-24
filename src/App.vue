@@ -1,23 +1,23 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <navigation />
-    <div class="main-container">
-      <center-container>
+    <div class="d-flex justify-content-center body">
+      <!-- <center-container> -->
         <router-view />
-      </center-container>
+      <!-- </center-container> -->
     </div>
-    <sqreen-footer />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navigation from "components/navigation";
 import { USER_REQUEST } from "actions/user";
-import SqreenFooter from "./components/footer/index.vue";
+import Footer from "./components/footer/index";
 
 export default {
   components: {
-    SqreenFooter,
+    Footer,
     Navigation
   },
   name: "app",
@@ -29,21 +29,8 @@ export default {
 };
 </script>
 
-<style>
-body {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  color: #2e426b;
-}
-ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-</style>
-
-<style scoped>
-.main-container {
-  min-height: calc(100vh - 70px);
-}
+<style lang="scss" scoped>
+  .body {
+    margin-top: 65px;
+  }
 </style>

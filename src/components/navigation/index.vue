@@ -1,27 +1,31 @@
-/** * Created by vouill on 11/13/17. */
-
 <template>
-  <div class="navigation">
-    <ul>
-      <li>
-        <router-link class="brand" to="/">
-          <img src="../../assets/logo.png" width="40px" /><strong
-            >DOGEBOOK</strong
-          >
-        </router-link>
-      </li>
-    </ul>
-    <ul>
-      <li v-if="isProfileLoaded">
-        <router-link to="/account">{{ name }}</router-link>
-      </li>
-      <li v-if="isAuthenticated" @click="logout">
-        <span class="logout">Logout</span>
-      </li>
-      <li v-if="!isAuthenticated && !authLoading">
-        <router-link to="/login">Login</router-link>
-      </li>
-    </ul>
+  <div>
+    <nav class="navbar navigation shadow rounded justify-content-between flex-nowrap flex-row fixed-top font-weight-bold">
+      <div class="container">
+        <ul class="nav navbar-nav flex-row float-left">
+          <li>
+            <router-link to="/" class="mr-3 nav-link pr-3">Home</router-link>
+          </li>
+          <li>
+            <router-link to="/outlet" v-if="isAuthenticated" class="mr-3 nav-link pr-3">Outlet Collection</router-link>
+          </li>
+          <li>
+            <router-link to="/product" v-if="isAuthenticated" class="mr-3 nav-link pr-3">Product Collection</router-link>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav flex-row float-right">
+          <li class="nav-item" v-if="isProfileLoaded">
+            <router-link class="nav-link pr-3" to="/account">{{ name }}</router-link>
+          </li>
+          <li class="nav-item" v-if="isAuthenticated" @click="logout">
+            <router-link class="nav-link pr-3" to="">Logout</router-link>
+          </li>
+          <li class="nav-item" v-if="!isAuthenticated && !authLoading">
+            <router-link class="nav-link pr-3" to="/login">Login</router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
 </template>
 
@@ -29,24 +33,16 @@
 a {
   color: white;
   text-decoration: none;
+  font-size: 20px;
 }
+
 .navigation {
   display: flex;
-  color: white;
   align-items: center;
   background-color: #ffa035;
-  padding: 5px;
-
-  ul {
-    display: flex;
-    &:first-child {
-      flex-grow: 1;
-    }
-    li {
-      padding-right: 1em;
-    }
-  }
+  padding: 10px;
 }
+
 .brand {
   display: flex;
   align-items: center;

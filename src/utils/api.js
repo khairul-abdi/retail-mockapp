@@ -1,19 +1,18 @@
-const mocks = {
-  auth: { POST: { token: "This-is-a-mocked-token" } },
-  "user/me": { GET: { name: "doggo", title: "sir" } }
-};
+import axios from 'axios'
 
-const apiCall = ({ url, method }) =>
-  new Promise((resolve, reject) => {
-    setTimeout(() => {
-      try {
-        resolve(mocks[url][method || "GET"]);
-        console.log(`Mocked '${url}' - ${method || "GET"}`);
-        console.log("response: ", mocks[url][method || "GET"]);
-      } catch (err) {
-        reject(new Error(err));
-      }
-    }, 1000);
+const apiCall = ({data, method }) =>
+new Promise((resolve, reject) => {
+    const url = `https://private-eaf0d8-retailmockapp.apiary-mock.com/auth/login`
+    axios.post(url, data)
+    .then((res) => {
+      console.log('Ini hasil fetch ====>>> ',res.data)
+      // return res.data
+
+      resolve(res.data)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
   });
 
 export default apiCall;

@@ -1,31 +1,29 @@
-/** * Created by vouill on 11/13/17. */
-
 <template>
-  <div>
-    <form class="login" @submit.prevent="login">
-      <h1>Sign in</h1>
-      <label>User name</label>
-      <input required v-model="username" type="text" placeholder="Snoopy" />
-      <label>Password</label>
-      <input
-        required
-        v-model="password"
-        type="password"
-        placeholder="Password"
-      />
-      <hr />
-      <button type="submit">Login</button>
-    </form>
+  <div class="container">
+    <div class="vue-template col-6 mx-auto">
+      <form @submit.prevent="login">
+        <h1>Sign in</h1>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" required v-model="username" class="form-control form-control-lg" />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" v-model="password" class="form-control form-control-lg" />
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
+      </form>
+    </div>
   </div>
 </template>
 
-<style>
-.login {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  padding: 10px;
-}
+<style lang="scss" scoped>
+  .vue-template {
+    align-items: center;
+    margin-top: 90px;
+  }
 </style>
 
 <script>
@@ -35,8 +33,8 @@ export default {
   name: "login",
   data() {
     return {
-      username: "dogo",
-      password: "dogy"
+      username: "",
+      password: ""
     };
   },
   methods: {
@@ -44,7 +42,7 @@ export default {
       const { username, password } = this;
       this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
         this.$router.push("/");
-      });
+      })
     }
   }
 };

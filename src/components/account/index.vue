@@ -1,9 +1,7 @@
-/** * Created by vouill on 11/13/17. */
-
 <template>
   <div>
     <div class="headline">
-      <img src="../../assets/dog-profile.jpeg" />
+      <img src="../../assets/logo.png" />
       <h1>Your doge profile</h1>
     </div>
     <p v-if="profile.name">

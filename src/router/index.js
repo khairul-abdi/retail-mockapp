@@ -4,6 +4,8 @@ import Home from "components/home";
 import Account from "components/account";
 import Login from "components/login";
 import store from "../store";
+import Outlet from "components/outlet"
+import Product from "components/product"
 
 Vue.use(Router);
 
@@ -35,6 +37,18 @@ export default new Router({
       path: "/account",
       name: "Account",
       component: Account,
+      beforeEnter: ifAuthenticated
+    },
+    {
+      path: "/outlet",
+      name: "Outlet",
+      component: Outlet,
+      beforeEnter: ifAuthenticated
+    },
+    {
+      path: "/product",
+      name: "Product",
+      component: Product,
       beforeEnter: ifAuthenticated
     },
     {

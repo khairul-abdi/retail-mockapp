@@ -1,18 +1,17 @@
-/** * Created by vouill on 11/13/17. */
-
 <template>
-  <div>
+  <div class="home">
     <loading v-if="loading" />
     <div v-if="isAuthenticated">
-      <feed-item v-for="(feed, index) in fakeFeed" :key="index" :feed="feed" />
+      <a href="/outlet">
+        <h4>Outlet Collection</h4>
+      </a>
+      <a href="/product">
+        <h4>Product Collection</h4>
+      </a>
     </div>
     <div v-if="!isAuthenticated && authStatus !== 'loading'">
-      <h1>Welcome to DogeBook !</h1>
-      <p>
-        When meeting new doge friends is harder than ever, Dogebook closes the
-        gap between all paws in the world
-      </p>
-      <login />
+      <h1>Welcome to Retail-mockapp !</h1>
+      <p><a href="/login">Please Sign in </a></p>
     </div>
   </div>
 </template>
@@ -22,29 +21,31 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 25px;
 }
 </style>
 
 <script>
-import fakeFeed from "./fakeFeed";
-import FeedItem from "./feedItem.vue";
 import { mapGetters } from "vuex";
-import Login from "components/login";
+import Outlet from "components/outlet";
+import Product from "components/product";
 
 export default {
   components: {
-    Login,
-    FeedItem
+    Outlet,
+    Product
   },
   name: "home",
   computed: {
     ...mapGetters(["isAuthenticated", "authStatus"]),
     loading: function() {
+      console.log('INI ISAUTHENTICATED ===>>>', this.isAuthenticated)
+      console.log('INI authStatus ===>>>', this.authStatus)
       return this.authStatus === "loading" && !this.isAuthenticated;
     }
   },
   data() {
-    return { fakeFeed };
+    return { };
   }
 };
 </script>

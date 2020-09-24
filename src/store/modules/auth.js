@@ -21,16 +21,20 @@ const getters = {
 
 const actions = {
   [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
+    console.log('INI USER BRO', user)
     return new Promise((resolve, reject) => {
       commit(AUTH_REQUEST);
-      apiCall({ url: "auth", data: user, method: "POST" })
+      apiCall({ data: user})
         .then(resp => {
-          localStorage.setItem("user-token", resp.token);
+          console.log("INI DARI RESPONSE AKHIR", resp)
+          const token = resp.data.access_token.token
+
+          localStorage.setItem("user-token", token);
           // Here set the header of your ajax library to the token value.
           // example with axios
           // axios.defaults.headers.common['Authorization'] = resp.token
-          commit(AUTH_SUCCESS, resp);
-          dispatch(USER_REQUEST);
+          commit(AUTH_SUCCESS, {"token": token});
+          dispatch(USER_REQUEST, user);
           resolve(resp);
         })
         .catch(err => {
